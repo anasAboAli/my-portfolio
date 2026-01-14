@@ -1,0 +1,33 @@
+$primary: #64ffda;
+$primary-hover: #4cd6b3;
+$secondary: #112240;
+$bg-body: #0a192f;
+$bg-item: #112240;
+$text-main: #8892b0;
+$text-heading: #ccd6f6;
+$white: #e6f1ff;
+
+// Light Mode (if toggled - not implementing toggle logic yet unless requested, but variables should be ready, or we use CSS variables for easy switching)
+// For now, I'll stick to the "Dark mode enabled by default" requirement and hardcode dark values or use :root variables. 
+// Using CSS variables is better for switching.
+
+:root {
+  --color-primary: #64ffda;
+  --color-secondary: #ff6b6b; // Pop color
+  --bg-body: #0a192f;
+  --bg-card: #112240;
+  --bg-nav: rgba(10, 25, 47, 0.85);
+  
+  --text-main: #8892b0;
+  --text-heading: #ccd6f6;
+  --text-highlight: #64ffda;
+  
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  --transition: all 0.25s ease-in-out;
+}
+
+$font-main: var(--font-main);
+$primary: var(--color-primary);
+$bg-body: var(--bg-body);
