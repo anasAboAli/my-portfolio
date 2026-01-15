@@ -21,6 +21,16 @@ const projects = ref([
     type: 'University Project',
     link: 'https://anas-vue-firstpro.netlify.app/',
     github: '#'
+  },
+  {
+    id: 3,
+    title: 'Happiness Restaurant',
+    description: 'A website showcasing the latest and most delicious Eastern dishes, their prices, and current restaurant offers.',
+    tech: ['HTML', 'SCSS', 'JavaScript', 'Vue.js'],
+    role: 'Full project designer and developer',
+    type: 'Freelance Project',
+    link: 'https://happiness-restaurant-2004.netlify.app/',
+    github: '#'
   }
 ])
 </script>
