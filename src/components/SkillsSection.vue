@@ -28,6 +28,7 @@
         <div class="skills__category">
           <h3>Tools</h3>
           <ul>
+            <li><span class="icon">firebase</span> Firebase</li>
             <li><span class="icon">git</span> Git</li>
             <li><span class="icon">github</span> GitHub</li>
             <li><span class="icon">npm</span> NPM</li>

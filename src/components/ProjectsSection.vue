@@ -11,11 +11,20 @@ const projects = ref([
     type: 'Freelance',
     link: 'https://mobile-anas-store.netlify.app/',
     github: '#' // Placeholder
+  },{
+    id: 2,
+    title: 'Movies Library Project',
+    description: 'A website that showcases The latest movies, sports broadcasts, and documentaries in a stunning and attractive format.',
+    tech: ['HTML', 'SCSS', 'JavaScript', 'firebase'],
+    role: 'Full project designer and developer',
+    type: 'Freelance',
+    link: 'https://movies-library-project.netlify.app/',
+    github: '#' // Placeholder
   },
   {
-    id: 2,
+    id: 3,
     title: 'Quran Memorization Center',
-    description: 'A website presenting the achievements of a Quran memorization center and introducing its scholars and preachers.',
+    descriptsion: 'A website presenting the achievements of a Quran memorization center and introducing its scholars and preachers.',
     tech: ['HTML', 'SCSS', 'JavaScript', 'Vue.js'],
     role: 'Full project designer and developer',
     type: 'University Project',
@@ -23,7 +32,7 @@ const projects = ref([
     github: '#'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Happiness Restaurant',
     description: 'A website showcasing the latest and most delicious Eastern dishes, their prices, and current restaurant offers.',
     tech: ['HTML', 'SCSS', 'JavaScript', 'Vue.js'],
