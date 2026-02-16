@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const showAll = ref(false)
 
 const projects = ref([
   {
@@ -40,8 +42,22 @@ const projects = ref([
     type: 'Freelance Project',
     link: 'https://happiness-restaurant-2004.netlify.app/',
     github: '#'
+  },
+  {
+    id: 5,
+    title: 'WanderLust | Luxury Travel & Extraordinary Destinations',
+    description: 'A website showcasing the latest and most luxurious travel packages and destinations from WanderLust',
+    tech: ['HTML', 'SCSS', 'JavaScript', 'Vue.js', 'firebase'],
+    role: 'Full project designer and developer',
+    type: 'Freelance Project',
+    link: 'https://wanderlust-company.netlify.app/',
+    github: '#'
   }
 ])
+
+const visibleProjects = computed(() => {
+  return showAll.value ? projects.value : projects.value.slice(0, 3)
+})
 </script>
 
 <template>
@@ -50,32 +66,39 @@ const projects = ref([
       <h2 class="section-title"><span>03.</span> Some Things I've Built</h2>
       
       <div class="projects__grid">
-        <div v-for="project in projects" :key="project.id" class="project-card">
-          <div class="project-card__content">
-            <p class="project-card__overline">{{ project.type }}</p>
-            <h3 class="project-card__title">
-              <a :href="project.link" target="_blank">{{ project.title }}</a>
-            </h3>
-            
-            <div class="project-card__description">
-              <p>{{ project.description }}</p>
-            </div>
-            
-            <ul class="project-card__tech-list">
-              <li v-for="tech in project.tech" :key="tech">{{ tech }}</li>
-            </ul>
-            
-            <div class="project-card__links">
-                <!-- Using SVG directly or Icon component -->
-                <a :href="project.github" aria-label="GitHub Link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-                <a :href="project.link" aria-label="External Link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title>External Link</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+        <TransitionGroup name="fade">
+          <div v-for="project in visibleProjects" :key="project.id" class="project-card">
+            <div class="project-card__content">
+              <p class="project-card__overline">{{ project.type }}</p>
+              <h3 class="project-card__title">
+                <a :href="project.link" target="_blank">{{ project.title }}</a>
+              </h3>
+              
+              <div class="project-card__description">
+                <p>{{ project.description }}</p>
+              </div>
+              
+              <ul class="project-card__tech-list">
+                <li v-for="tech in project.tech" :key="tech">{{ tech }}</li>
+              </ul>
+              
+              <div class="project-card__links">
+                  <a :href="project.github" aria-label="GitHub Link" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <a :href="project.link" aria-label="External Link" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title>External Link</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+              </div>
             </div>
           </div>
-        </div>
+        </TransitionGroup>
+      </div>
+
+      <div class="projects__show-more">
+        <button @click="showAll = !showAll" class="btn-primary">
+          {{ showAll ? 'Show less' : 'Show more' }}
+        </button>
       </div>
     </div>
   </section>
@@ -177,5 +200,39 @@ const projects = ref([
             }
         }
     }
+}
+
+.projects__show-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+
+    .btn-primary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+        padding: 1.25rem 1.75rem;
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        
+        &:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>
